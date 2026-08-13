@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ice fish Daiii</title>
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            width: 100vw;
+            height: 100vh;
+
+            overflow: hidden;
+
+            background: #faf7ef;
+
+        }
+
+
+
+        .home {
+
+            width: 100vw;
+
+            height: 100vh;
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+
+        /* =========================
+   背景
+========================= */
+
+
+        .background {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            left: 0;
+
+            top: 0;
+
+            z-index: 0;
+
+        }
+
+
+
+        /* =========================
+   星星
+========================= */
+
+
+        .stars {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            z-index: 2;
+
+        }
+
+
+
+        .star {
+
+            position: absolute;
+
+            color: #8ea6b5;
+
+            opacity: 0;
+
+            animation:
+
+                starShow 1s forwards,
+
+                starTwinkle infinite ease-in-out;
+
+
+        }
+
+
+
+        @keyframes starShow {
+
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(0);
+
+            }
+
+
+            to {
+
+                opacity: .7;
+
+                transform: scale(1);
+
+            }
+
+
+        }
+
+
+
+        @keyframes starTwinkle {
+
+
+            0%,
+            100% {
+
+                opacity: .3;
+
+            }
+
+
+            50% {
+
+                opacity: 1;
+
+            }
+
+
+        }
+
+
+
+        /* =========================
+   树
+========================= */
+
+
+        .tree {
+
+            position: absolute;
+
+
+            width: 40vw;
+
+            max-width: 700px;
+
+
+            left: 50%;
+
+            top: 50%;
+
+
+            transform:
+
+                translate(-50%, -45%) scale(.95);
+
+
+            opacity: 0;
+
+
+            z-index: 3;
+
+
+
+            animation:
+
+                treeAppear 1s ease forwards;
+
+
+        }
+
+
+
+        @keyframes treeAppear {
+
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+
+                    translate(-50%, -45%) scale(.9);
+
+
+            }
+
+
+
+            100% {
+
+
+                opacity: 1;
+
+                transform:
+
+                    translate(-50%, -45%) scale(1);
+
+
+            }
+
+
+        }
+
+
+
+
+        /* =========================
+   入口按钮共同设置
+========================= */
+
+
+        .object {
+
+
+            position: absolute;
+
+            z-index: 5;
+
+
+            opacity: 0;
+
+
+        }
+
+
+
+        .object img {
+
+
+            width: 100%;
+
+            display: block;
+
+
+            transition:
+
+                transform .35s ease;
+
+
+        }
+
+
+
+        /*
+鼠标悬停
+
+只放大图片
+
+不会影响漂浮动画
+
+*/
+
+
+        .object:hover img {
+
+
+            transform: scale(1.08);
+
+
+        }
+
+
+
+
+
+
+        /* =========================
+苹果按钮
+
+位置根据你的草图
+
+========================= */
+
+
+        .apple {
+
+
+            width: 220px;
+
+
+            left: 18%;
+
+
+            top: 65%;
+
+
+            animation:
+
+                objectAppear 1s ease forwards;
+
+
+            animation-delay: 2s;
+
+
+        }
+
+
+
+
+
+        /* =========================
+叶子按钮
+
+========================= */
+
+
+        .leaf {
+
+
+            width: 220px;
+
+
+            right: 18%;
+
+
+            top: 62%;
+
+
+            animation:
+
+                objectAppear 1s ease forwards,
+
+                leafFloat 6s infinite ease-in-out;
+
+
+            animation-delay: 2s, 3s;
+
+
+        }
+
+
+
+
+        @keyframes leafFloat {
+
+
+            0%,
+            100% {
+
+                margin-top: 0;
+
+                transform: rotate(0deg);
+
+            }
+
+
+            50% {
+
+                margin-top: -18px;
+
+                transform: rotate(5deg);
+
+            }
+
+
+
+        }
+
+
+
+
+        /* =========================
+蝴蝶按钮
+
+========================= */
+
+
+        .butterfly {
+
+
+            width: 230px;
+
+
+            right: 25%;
+
+
+            top: 20%;
+
+
+            animation:
+
+                objectAppear 1s ease forwards,
+
+                butterflyMove 10s infinite ease-in-out;
+
+
+            animation-delay: 2s, 3s;
+
+
+
+        }
+
+
+
+        @keyframes butterflyMove {
+
+
+            0%,
+            100% {
+
+
+                margin-left: 0;
+
+                margin-top: 0;
+
+
+            }
+
+
+
+            25% {
+
+
+                margin-left: 20px;
+
+                margin-top: -15px;
+
+
+            }
+
+
+
+            50% {
+
+
+                margin-left: 0;
+
+                margin-top: -30px;
+
+
+            }
+
+
+
+            75% {
+
+
+                margin-left: -20px;
+
+                margin-top: -10px;
+
+
+            }
+
+
+        }
+
+
+
+
+        @keyframes objectAppear {
+
+
+            from {
+
+                opacity: 0;
+
+                transform: scale(.8);
+
+            }
+
+
+            to {
+
+                opacity: 1;
+
+                transform: scale(1);
+
+            }
+
+
+        }
+
+
+
+
+        /* 防止图片被拖动 */
+
+
+        img {
+
+            user-select: none;
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+
+    <div class="home">
+
+
+
+        <img class="background" src="images/background.png">
+
+
+
+        <div class="stars"></div>
+
+
+
+        <img class="tree" src="images/tree.png">
+
+
+
+        <a href="works.html" class="object apple">
+
+            <img src="images/apple.png">
+
+        </a>
+
+
+
+
+        <a href="about.html" class="object leaf">
+
+            <img src="images/leaf.png">
+
+        </a>
+
+
+
+
+        <a href="contact.html" class="object butterfly">
+
+            <img src="images/butterfly.png">
+
+        </a>
+        <script>
+
+
+            /* =========================
+               随机星星生成系统
+            ========================= */
+
+
+            const starsContainer = document.querySelector(".stars");
+
+
+
+            const starCount = 22;
+
+
+
+            for (let i = 0; i < starCount; i++) {
+
+
+                const star = document.createElement("span");
+
+
+                star.className = "star";
+
+
+                star.innerHTML = Math.random() > 0.5 ? "✦" : "✧";
+
+
+
+                // 随机位置
+
+                star.style.left = Math.random() * 100 + "%";
+
+                star.style.top = Math.random() * 100 + "%";
+
+
+
+                // 随机大小
+
+                const size = Math.random() * 15 + 10;
+
+                star.style.fontSize = size + "px";
+
+
+
+                // 随机出现时间
+
+                star.style.animationDelay =
+                    Math.random() * 2 + "s";
+
+
+
+                // 随机闪烁速度
+
+                const speed =
+                    Math.random() * 4 + 2;
+
+
+                star.style.animationDuration =
+                    "1s," + speed + "s";
+
+
+
+                starsContainer.appendChild(star);
+
+
+
+            }
+
+
+
+
+
+            /* =========================
+               鼠标轻微空间效果
+            
+               让漂浮物有一点生命感
+            ========================= */
+
+
+            const objects =
+                document.querySelectorAll(".object");
+
+
+
+            document.addEventListener(
+                "mousemove",
+                (e) => {
+
+
+                    const mouseX =
+                        e.clientX / window.innerWidth - 0.5;
+
+
+                    const mouseY =
+                        e.clientY / window.innerHeight - 0.5;
+
+
+
+                    objects.forEach(obj => {
+
+
+                        if (
+                            obj.classList.contains("apple")
+                        ) {
+
+                            return;
+
+                        }
+
+
+
+                        obj.style.marginLeft =
+                            mouseX * 8 + "px";
+
+
+
+                        obj.style.marginTop =
+                            mouseY * 8 + "px";
+
+
+
+                    });
+
+
+
+                });
+
+
+
+
+
+
+            /* =========================
+               页面进入保护
+            
+               防止图片加载慢导致动画错乱
+            ========================= */
+
+
+            window.onload = () => {
+
+
+                document.body.style.opacity = "1";
+
+
+            };
+
+
+
+
+        </script>
+
+
+
+    </div>
+
+
+</body>
+
+
+</html>

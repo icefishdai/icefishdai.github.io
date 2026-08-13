@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Works</title>
+
+
+    <style>
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+            width: 100vw;
+
+            height: 100vh;
+
+            overflow: hidden;
+
+            background: #faf6ed;
+
+        }
+
+
+
+
+        /* =====================
+   主页面
+===================== */
+
+
+        .works-page {
+
+
+            position: relative;
+
+
+            width: 100vw;
+
+
+            height: 100vh;
+
+
+            overflow: hidden;
+
+
+        }
+
+
+
+
+        /* =====================
+   背景
+===================== */
+
+
+        .background {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            z-index: 1;
+
+        }
+
+
+
+        /* =====================
+   四个物件按钮
+===================== */
+
+
+        .object {
+
+
+            position: absolute;
+
+
+            cursor: pointer;
+
+
+            transition: .4s ease;
+
+
+            z-index: 3;
+
+
+        }
+
+
+
+        .object img {
+
+
+            width: 100%;
+
+
+            display: block;
+
+
+        }
+
+
+
+
+        .object:hover {
+
+
+            transform: scale(1.12);
+
+
+        }
+
+
+
+
+        /* 本子 */
+
+
+        .notebook {
+
+
+            width: 260px;
+
+
+            left: 31%;
+
+
+            top: 20%;
+
+
+        }
+
+
+
+
+        /* 花束 */
+
+
+        .flower {
+
+
+            width: 260px;
+
+
+            left: 50%;
+
+
+            top: 28%;
+
+
+        }
+
+
+
+
+
+        /* 相机 */
+
+
+        .camera {
+
+
+            width: 250px;
+
+
+            left: 35%;
+
+
+            top: 50%;
+
+
+        }
+
+
+
+
+
+        /* 小熊 */
+
+
+        .bear {
+
+
+            width: 230px;
+
+
+            left: 50%;
+
+
+            top: 55%;
+
+
+        }
+
+
+
+
+
+        /* =====================
+   作品展示纸张
+===================== */
+
+
+        .collection {
+
+
+            position: absolute;
+
+
+            z-index: 10;
+
+
+
+            width: 80%;
+
+
+            height: 88%;
+
+
+
+            left: 50%;
+
+
+            bottom: -100%;
+
+
+
+            transform: translateX(-50%);
+
+
+
+            border-radius: 12px;
+
+
+
+            box-shadow:
+
+                0 15px 40px rgba(0, 0, 0, .18);
+
+
+
+            padding: 50px 70px;
+
+
+
+            overflow-y: auto;
+
+
+
+            transition:
+
+                bottom .8s cubic-bezier(.25, .8, .25, 1);
+
+
+
+        }
+
+
+
+
+        .collection.show {
+
+
+            bottom: 0;
+
+
+        }
+
+
+
+
+
+        /* 不同主题颜色 */
+
+
+        .drawing-paper {
+
+
+            background: #ffefef;
+
+
+        }
+
+
+
+        .ai-paper {
+
+
+            background: #f9eeff;
+
+
+        }
+
+
+
+        .video-paper {
+
+
+            background: #e7f5fc;
+
+
+        }
+
+
+
+        .design-paper {
+
+
+            background: #fff7e5;
+
+
+        }
+
+
+
+
+
+
+        /* =====================
+   关闭按钮
+===================== */
+
+
+        .close {
+
+
+            position: absolute;
+
+
+            right: 35px;
+
+
+            top: 20px;
+
+
+            font-size: 42px;
+
+
+            font-family: Arial;
+
+
+            color: #555;
+
+
+            cursor: pointer;
+
+
+            transition: .3s;
+
+
+        }
+
+
+
+        .close:hover {
+
+
+            transform: scale(1.2);
+
+
+        }
+
+
+
+
+        /* =====================
+   标题
+===================== */
+
+
+        .collection-title {
+
+
+            text-align: center;
+
+
+            font-size: 40px;
+
+
+            margin-bottom: 45px;
+
+
+            font-family:
+
+                "Microsoft YaHei",
+                sans-serif;
+
+
+            color: #555;
+
+
+        }
+
+
+
+
+
+        /* =====================
+   作品卡片
+===================== */
+
+
+        .project {
+
+
+            width: 80%;
+
+
+            margin:
+
+                0 auto 70px;
+
+
+            text-align: center;
+
+
+        }
+
+
+
+        .project img {
+
+
+            max-width: 100%;
+
+
+            max-height: 700px;
+
+
+            border-radius: 10px;
+
+
+        }
+
+
+
+        .project video {
+
+
+            width: 80%;
+
+
+            max-height: 450px;
+
+
+            border-radius: 10px;
+
+
+        }
+
+
+
+
+
+        .project h3 {
+
+
+            font-size: 28px;
+
+
+            margin-top: 25px;
+
+
+            color: #555;
+
+
+        }
+
+
+
+
+
+        .project p {
+
+
+            font-size: 18px;
+
+
+            line-height: 1.8;
+
+
+            color: #666;
+
+
+            margin-top: 15px;
+
+
+        }
+    </style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+    <div class="works-page">
+
+
+
+        <!-- 背景 -->
+
+
+        <img class="background" src="images/works_background.png">
+
+
+
+
+        <!-- =====================
+     四个入口物件
+===================== -->
+
+
+
+        <div class="object notebook">
+
+
+            <img src="images/notebook.png">
+
+
+        </div>
+
+
+
+
+        <div class="object flower">
+
+
+            <img src="images/flower.png">
+
+
+        </div>
+
+
+
+
+        <div class="object camera">
+
+
+            <img src="images/camera.png">
+
+
+        </div>
+
+
+
+
+        <div class="object bear">
+
+
+            <img src="images/bear.png">
+
+
+        </div>
+
+
+
+
+
+        <!-- =====================
+     绘画作品
+===================== -->
+
+
+        <div class="collection drawing-paper">
+
+
+            <div class="close">
+
+                ×
+
+            </div>
+
+
+            <h1 class="collection-title">
+
+                Sketchbook
+
+            </h1>
+
+
+
+            <div class="project">
+
+
+                <img src="drawingwork/1.png">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+            <div class="project">
+
+
+                <img src="drawingwork/2.jpg">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+            <div class="project">
+
+
+                <img src="drawingwork/3.png">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+            <div class="project">
+
+
+                <img src="drawingwork/4.jpg">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+            <div class="project">
+
+
+                <img src="drawingwork/5.png">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+            <div class="project">
+
+
+                <img src="drawingwork/6.png">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+            <div class="project">
+
+
+                <img src="drawingwork/7.jpg">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+            <div class="project">
+
+
+                <img src="drawingwork/8.png">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+            <div class="project">
+
+
+                <img src="drawingwork/9.png">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+            <div class="project">
+
+
+                <img src="drawingwork/10.jpg">
+
+
+                <h3>
+
+                    作品名称
+
+                </h3>
+
+
+                <p>
+
+                    创作时间：2026
+
+
+                    <br>
+
+
+                    这里填写作品理念介绍。
+
+
+                </p>
+
+
+            </div>
+
+
+
+
+        </div>
+        <!-- =====================
+             AI作品
+        ===================== -->
+
+
+        <div class="collection ai-paper">
+
+
+            <div class="close">
+
+                ×
+
+            </div>
+
+
+
+            <h1 class="collection-title">
+
+                AI Creation
+
+            </h1>
+
+
+
+
+            <div class="project">
+
+
+                <img src="images/ai/work1.png">
+
+
+                <h3>
+
+                    AI视觉实验
+
+                </h3>
+
+
+
+                <p>
+
+                    创作时间：2026
+
+                    <br>
+
+
+                    使用AI工具进行视觉探索，
+                    尝试不同风格与想象空间。
+
+                </p>
+
+
+            </div>
+
+
+
+
+
+            <div class="project">
+
+
+                <video controls>
+
+
+                    <source src="images/ai/video1.mp4">
+
+
+                </video>
+
+
+
+                <h3>
+
+                    AI短片实验
+
+                </h3>
+
+
+
+                <p>
+
+                    创作时间：2026
+
+                    <br>
+
+
+                    结合AI生成与后期编辑完成。
+
+                </p>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+        <!-- =====================
+             视频剪辑
+        ===================== -->
+
+
+        <div class="collection video-paper">
+
+
+            <div class="close">
+
+                ×
+
+            </div>
+
+
+
+
+            <h1 class="collection-title">
+
+                Video
+
+            </h1>
+
+
+
+
+
+            <div class="project">
+
+
+                <video controls>
+
+
+                    <source src="video1/1.mp4">
+
+
+                </video>
+
+
+
+
+                <h3>
+
+                    视频作品名称
+
+                </h3>
+
+
+
+                <p>
+
+                    创作时间：2026
+
+                    <br>
+
+
+                    这里填写视频创作理念。
+
+                </p>
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+
+        <!-- =====================
+             品牌设计
+        ===================== -->
+
+
+        <div class="collection design-paper">
+
+
+            <div class="close">
+
+                ×
+
+            </div>
+
+
+
+
+            <h1 class="collection-title">
+
+                Design
+
+            </h1>
+
+
+
+
+
+            <div class="project">
+
+
+                <img src="images/design/work1.png">
+
+
+
+                <h3>
+
+                    个人品牌设计
+
+                </h3>
+
+
+
+
+                <p>
+
+                    创作时间：2026
+
+                    <br>
+
+
+                    这里填写品牌设计理念、
+                    视觉系统说明。
+
+                </p>
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+    <script>
+
+
+
+        // 获取四个入口
+
+
+        const notebook =
+            document.querySelector(".notebook");
+
+
+        const flower =
+            document.querySelector(".flower");
+
+
+        const camera =
+            document.querySelector(".camera");
+
+
+        const bear =
+            document.querySelector(".bear");
+
+
+
+
+        // 获取四个收藏窗口
+
+
+        const drawing =
+            document.querySelector(".drawing-paper");
+
+
+        const ai =
+            document.querySelector(".ai-paper");
+
+
+        const video =
+            document.querySelector(".video-paper");
+
+
+        const design =
+            document.querySelector(".design-paper");
+
+
+
+
+
+
+        // 打开绘画
+
+
+        notebook.onclick = function () {
+
+            drawing.classList.add("show");
+
+        };
+
+
+
+
+        // 打开AI
+
+
+        flower.onclick = function () {
+
+            ai.classList.add("show");
+
+        };
+
+
+
+
+        // 打开视频
+
+
+        camera.onclick = function () {
+
+            video.classList.add("show");
+
+        };
+
+
+
+
+        // 打开设计
+
+
+        bear.onclick = function () {
+
+            design.classList.add("show");
+
+        };
+
+
+
+
+
+
+        // 所有关闭按钮
+
+
+        const closes =
+            document.querySelectorAll(".close");
+
+
+
+        closes.forEach(function (btn) {
+
+
+            btn.onclick = function () {
+
+
+                btn.parentElement.classList.remove("show");
+
+
+            };
+
+
+
+        });
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+
+</html>

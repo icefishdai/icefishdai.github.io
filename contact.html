@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Me</title>
+
+
+    <style>
+        * {
+
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+
+        body {
+
+            width: 100vw;
+            height: 100vh;
+
+            overflow: hidden;
+
+            background: #faf6ed;
+
+        }
+
+
+
+        /* =====================
+   整个页面
+===================== */
+
+
+        .contact-page {
+
+            position: relative;
+
+            width: 100vw;
+
+            height: 100vh;
+
+            overflow: hidden;
+
+        }
+
+
+
+        /* =====================
+   背景场景
+===================== */
+
+
+        .background {
+
+            position: absolute;
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            z-index: 1;
+
+        }
+
+
+
+        /* =====================
+   信封按钮
+===================== */
+
+
+        .envelope {
+
+            position: absolute;
+
+
+            width: 230px;
+
+
+            left: 45%;
+
+            top: 45%;
+
+
+            transform:
+
+                translate(-50%, -50%);
+
+
+            z-index: 3;
+
+
+            cursor: pointer;
+
+
+            transition: .4s ease;
+
+
+        }
+
+
+
+        .envelope img {
+
+
+            width: 100%;
+
+
+            display: block;
+
+
+        }
+
+
+
+
+        /* 鼠标经过 */
+
+
+        .envelope:hover {
+
+
+            transform:
+
+                translate(-50%, -50%) scale(1.08);
+
+
+        }
+
+
+
+
+        /* 点击反馈 */
+
+
+        .envelope:active {
+
+
+            transform:
+
+                translate(-50%, -50%) scale(.96);
+
+
+        }
+
+
+
+
+
+        /* =====================
+   信纸
+===================== */
+
+
+        .paper {
+
+
+            position: absolute;
+
+
+            z-index: 5;
+
+
+
+            width: 75%;
+
+            height: 85%;
+
+
+            left: 50%;
+
+
+            bottom: -100%;
+
+
+            transform:
+
+                translateX(-50%);
+
+
+
+            background: #f7ead8;
+
+
+            border-radius: 6px;
+
+
+
+            box-shadow:
+
+                0 10px 30px rgba(0, 0, 0, .15);
+
+
+
+            padding: 50px;
+
+
+
+            transition:
+
+                bottom .8s cubic-bezier(.25, .8, .25, 1);
+
+
+
+        }
+
+
+
+        /* 打开状态 */
+
+
+        .paper.show {
+
+
+            bottom: 0;
+
+
+        }
+
+
+
+
+
+
+        /* =====================
+   纸张内容
+===================== */
+
+
+        .paper-title {
+
+
+            font-size: 42px;
+
+
+            font-family: cursive;
+
+
+            text-align: center;
+
+
+            color: #666;
+
+
+            margin-bottom: 50px;
+
+
+        }
+
+
+
+        .content {
+
+
+            font-size: 22px;
+
+
+            line-height: 2;
+
+
+            color: #555;
+
+
+            font-family:
+
+                "Microsoft YaHei",
+                sans-serif;
+
+
+        }
+
+
+
+        .content a {
+
+
+            color: #555;
+
+            text-decoration: none;
+
+
+            border-bottom:
+
+                1px solid #888;
+
+
+            transition: .3s;
+
+
+        }
+
+
+
+        .content a:hover {
+
+
+            opacity: .6;
+
+
+        }
+
+
+
+
+
+        /* =====================
+   关闭按钮
+===================== */
+
+
+        .close {
+
+
+            position: absolute;
+
+
+            right: 35px;
+
+
+            top: 20px;
+
+
+            font-size: 40px;
+
+
+            color: #666;
+
+
+            cursor: pointer;
+
+
+            font-family: cursive;
+
+
+            transition: .3s;
+
+
+        }
+
+
+
+        .close:hover {
+
+
+            transform: scale(1.15);
+
+
+        }
+
+
+
+
+
+        /* =====================
+   小纸张动画感
+===================== */
+
+
+        .paper {
+
+            animation: none;
+
+        }
+
+
+
+        .paper.show {
+
+
+            animation:
+
+                paperAppear .8s ease;
+
+
+        }
+
+
+
+        @keyframes paperAppear {
+
+
+            from {
+
+
+                opacity: 0;
+
+            }
+
+
+            to {
+
+
+                opacity: 1;
+
+
+            }
+
+
+        }
+    </style>
+
+
+</head>
+
+
+
+<body>
+
+
+
+    <div class="contact-page">
+
+
+
+        <!-- 背景 -->
+
+
+        <img class="background" src="images/contact_background.png">
+
+
+
+        <!-- 信封 -->
+
+
+        <div class="envelope">
+
+
+            <img src="images/envelope.png">
+
+
+        </div>
+
+
+
+
+
+        <!-- 信纸 -->
+
+
+        <div class="paper">
+
+
+
+            <div class="close">
+
+                ×
+
+            </div>
+
+
+
+            <div class="paper-title">
+
+                Contact Me
+
+            </div>
+
+
+
+
+            <div class="content">
+
+
+                <p>
+
+                    你好，很高兴认识你，我是多宝鱼！
+
+                </p>
+
+
+                <p>
+
+                    如果你对我的作品感兴趣，
+
+                    欢迎联系我。
+
+                </p>
+
+
+
+                <br>
+
+
+
+                <p>
+
+                    ✉ Email:icefish@Outlook.com
+
+
+                    <br>
+                    (click to send to me)
+
+
+                    <a href="mailto:icefishD@outlook.com">
+
+                        your@email.com
+
+                    </a>
+
+
+                </p>
+
+
+
+                <p>
+
+                    ◌ 小红书:
+
+                    <br>
+
+
+                    <a href="https://www.xiaohongshu.com/user/profile/5ddcacc5000000000100833f" target="_blank">
+
+                        多宝鱼的主页
+
+                    </a>
+
+
+                </p>
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+
+    <script>
+
+
+
+        const envelope =
+            document.querySelector(".envelope");
+
+
+
+        const paper =
+            document.querySelector(".paper");
+
+
+
+        const close =
+            document.querySelector(".close");
+
+
+
+
+        // 点击信封
+
+
+        envelope.onclick = function () {
+
+
+            paper.classList.add("show");
+
+
+        }
+
+
+
+
+
+        // 点击关闭
+
+
+        close.onclick = function () {
+
+
+            paper.classList.remove("show");
+
+
+        }
+
+
+
+    </script>
+
+
+
+
+</body>
+
+
+</html>
