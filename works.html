@@ -230,12 +230,9 @@
             z-index: 10;
 
 
-
             width: 80%;
 
-
             height: 88%;
-
 
 
             left: 50%;
@@ -244,13 +241,10 @@
             bottom: -100%;
 
 
-
             transform: translateX(-50%);
 
 
-
             border-radius: 12px;
-
 
 
             box-shadow:
@@ -258,19 +252,20 @@
                 0 15px 40px rgba(0, 0, 0, .18);
 
 
-
             padding: 50px 70px;
-
 
 
             overflow-y: auto;
 
 
+            display: flex;
+
+            flex-wrap: wrap;
+
 
             transition:
 
                 bottom .8s cubic-bezier(.25, .8, .25, 1);
-
 
 
         }
@@ -391,6 +386,8 @@
         .collection-title {
 
 
+            width: 100%;
+
             text-align: center;
 
 
@@ -414,7 +411,6 @@
 
 
 
-
         /* =====================
    作品卡片
 ===================== */
@@ -422,20 +418,13 @@
 
         .project {
 
+            width: 45%;
 
-            width: 80%;
-
-
-            margin:
-
-                0 auto 70px;
-
+            margin: 0 2% 70px;
 
             text-align: center;
 
-
         }
-
 
 
         .project img {
@@ -457,10 +446,11 @@
         .project video {
 
 
-            width: 80%;
+            width: 100%;
 
 
-            max-height: 450px;
+
+            max-height: 1000px;
 
 
             border-radius: 10px;
@@ -906,7 +896,7 @@
 
             <h1 class="collection-title">
 
-                AI Creation
+                Other Creation
 
             </h1>
 
