@@ -5,933 +5,732 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-    <title>About Me - Digital Garden</title>
+    <title>About Me</title>
 
 
     <style>
-        * {
+        /* ==================================================
+   基础设置
+================================================== */
 
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+            background: #faf7ee;
 
         }
 
 
-        body {
+        /* ==================================================
+   整个 About 页面
+================================================== */
+
+        .about-page {
+
+            width: 100vw;
+            height: 100vh;
+
+            overflow-y: auto;
+            overflow-x: hidden;
+
+            scroll-snap-type: y mandatory;
+
+            scroll-behavior: smooth;
+
+        }
 
 
-            background: #F4F1EA;
+        /* ==================================================
+   每一个页面部分
+================================================== */
 
-            font-family:
+        .about-section {
 
-                "Microsoft YaHei",
-                "PingFang SC",
-                sans-serif;
+            position: relative;
 
-
-            color: #455044;
-
+            width: 100vw;
+            height: 100vh;
 
             min-height: 100vh;
 
+            flex-shrink: 0;
+
+            scroll-snap-align: start;
+
+            overflow: hidden;
 
         }
 
 
+        /* ==================================================
+   上半部分背景
+================================================== */
 
+        .about-top {
 
+            background-image: url("about-top.png");
 
-        .page {
+            background-size: 100% 100%;
 
+            background-position: center;
 
-            padding: 60px 10%;
-
-            animation: fade .8s;
-
+            background-repeat: no-repeat;
 
         }
 
 
+        /* ==================================================
+   下半部分背景
+================================================== */
+
+        .about-bottom {
+
+            background-image: url("about-bottom.png");
+
+            background-size: 100% 100%;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+        }
 
 
+        /* ==================================================
+   漂浮物
+================================================== */
 
-        .back {
+        .floating-object {
 
+            position: fixed;
+
+            z-index: 20;
+
+            pointer-events: none;
+
+            user-select: none;
+
+            object-fit: contain;
+
+            opacity: 1;
+
+        }
+
+
+        /* ==================================================
+   下半部分文字区域
+================================================== */
+
+        .about-text {
 
             position: absolute;
 
-            top: 35px;
+            z-index: 10;
 
-            left: 40px;
+            left: 50%;
 
+            top: 50%;
 
-            text-decoration: none;
+            transform: translate(-50%, -50%);
 
+            width: 72%;
 
-            color: #66745f;
+            max-width: 1100px;
 
-
-            border: 1px solid #B9C5B1;
-
-
-            padding: 10px 25px;
-
-
-            border-radius: 30px;
-
-
-            transition: .3s;
-
-
-        }
-
-
-
-        .back:hover {
-
-
-            background: #9CAF88;
-
-            color: white;
-
-
-        }
-
-
-
-
-
-        .header {
-
-
-            text-align: center;
-
-            margin-bottom: 50px;
-
-
-        }
-
-
-
-        .header h1 {
-
-
-            font-size: 42px;
-
-            font-weight: 400;
-
-            letter-spacing: 8px;
-
-
-        }
-
-
-
-        .header p {
-
-
-            margin-top: 15px;
-
-            color: #8C9984;
-
-            letter-spacing: 3px;
-
-
-        }
-
-
-
-
-
-
-        /*
-====================
-
-树结构
-
-====================
-*/
-
-
-
-        .tree-box {
-
-
-            height: 520px;
-
-
-            position: relative;
-
+            height: 55%;
 
             display: flex;
 
             justify-content: center;
-
-
-        }
-
-
-
-
-        .tree {
-
-
-            position: relative;
-
-            width: 350px;
-
-            height: 450px;
-
-
-        }
-
-
-
-
-        .trunk {
-
-
-            position: absolute;
-
-
-            bottom: 0;
-
-            left: 50%;
-
-
-            transform: translateX(-50%);
-
-
-            height: 250px;
-
-
-            width: 45px;
-
-
-            background: #8E765B;
-
-
-            border-radius: 30px;
-
-
-        }
-
-
-
-        .root {
-
-
-            position: absolute;
-
-
-            bottom: 0;
-
-
-            left: 50%;
-
-
-            transform: translateX(-50%);
-
-
-            width: 220px;
-
-
-            height: 40px;
-
-
-            border-radius: 50%;
-
-
-            background: #8E765B;
-
-
-        }
-
-
-
-
-        .branch {
-
-
-            position: absolute;
-
-            height: 10px;
-
-            background: #8E765B;
-
-            border-radius: 20px;
-
-            transform-origin: left center;
-
-
-        }
-
-
-
-        .b1 {
-
-
-            width: 170px;
-
-            top: 160px;
-
-            left: 160px;
-
-            transform: rotate(-35deg);
-
-
-        }
-
-
-        .b2 {
-
-
-            width: 160px;
-
-            top: 210px;
-
-            left: 40px;
-
-            transform: rotate(35deg);
-
-
-        }
-
-
-        .b3 {
-
-
-            width: 130px;
-
-            top: 110px;
-
-            left: 120px;
-
-            transform: rotate(-65deg);
-
-
-        }
-
-
-
-
-        /* 技能叶子 */
-
-
-        .skill {
-
-
-            position: absolute;
-
-
-            width: 90px;
-
-
-            height: 90px;
-
-
-            background: #9CAF88;
-
-
-            border-radius:
-
-                50% 0 50% 50%;
-
-
-            display: flex;
-
 
             align-items: center;
 
-            justify-content: center;
-
-
-            font-size: 14px;
-
-
-            color: white;
-
-
-            cursor: pointer;
-
-
-            transition: .4s;
-
-
-            animation: float 4s infinite;
-
+            text-align: center;
 
         }
 
 
+        /* ==================================================
+   文字本身
+================================================== */
 
-        .skill:hover {
+        .about-text p {
 
+            width: 100%;
 
-            transform: scale(1.2) rotate(10deg);
+            max-width: 900px;
 
+            font-family:
+                "Microsoft YaHei",
+                "Noto Sans SC",
+                sans-serif;
 
-            background: #D9A87E;
-
-
-        }
-
-
-
-
-        .s1 {
-
-            top: 40px;
-
-            left: 80px;
-
-
-        }
-
-
-        .s2 {
-
-            top: 90px;
-
-            right: 20px;
-
-
-        }
-
-
-        .s3 {
-
-            top: 180px;
-
-            left: -20px;
-
-
-        }
-
-
-
-        .s4 {
-
-            top: 230px;
-
-            right: -30px;
-
-
-        }
-
-
-
-        .s5 {
-
-            top: 300px;
-
-            left: 80px;
-
-
-        }
-
-
-
-
-        /*
-====================
-
-介绍区域
-
-====================
-*/
-
-
-        .intro {
-
-
-            margin-top: 50px;
-
-
-            display: grid;
-
-
-            grid-template-columns:
-
-                1fr 1fr;
-
-
-            gap: 50px;
-
-
-        }
-
-
-
-
-        .card {
-
-
-            background:
-
-                rgba(255, 255, 255, .45);
-
-
-            border:
-
-                1px solid #D5DCCF;
-
-
-            padding: 35px;
-
-
-            border-radius: 30px;
-
-
-        }
-
-
-
-        .card h2 {
-
-
-            font-weight: 400;
-
-
-            margin-bottom: 20px;
-
-
-            letter-spacing: 3px;
-
-
-        }
-
-
-
-
-        .card p {
-
+            font-size: clamp(16px, 1.35vw, 25px);
 
             line-height: 2;
 
+            letter-spacing: 0.05em;
 
-            font-size: 15px;
+            color: #68635d;
 
-
-            color: #66745f;
-
-
-        }
-
-
-
-
-
-        /*
-时间轴
-
-*/
-
-
-        .timeline {
-
-
-            margin-top: 20px;
-
+            white-space: pre-line;
 
         }
 
 
+        /* ==================================================
+   手机适配
+================================================== */
 
-        .item {
+        @media (max-width: 700px) {
 
+            .about-text {
 
-            border-left:
+                width: 70%;
 
-                2px solid #9CAF88;
-
-
-            padding-left: 25px;
-
-
-            margin-bottom: 25px;
-
-
-        }
-
-
-
-        .item h3 {
-
-
-            font-size: 18px;
-
-            font-weight: 400;
-
-
-        }
-
-
-
-        .item span {
-
-
-            font-size: 13px;
-
-
-            color: #899681;
-
-
-        }
-
-
-
-
-        @keyframes float {
-
-
-            0%,
-            100% {
-
-                transform: translateY(0);
+                height: 55%;
 
             }
 
 
-            50% {
+            .about-text p {
 
-                transform: translateY(-15px);
+                font-size: clamp(13px, 3.5vw, 18px);
+
+                line-height: 1.8;
 
             }
-
 
         }
 
 
+        /* ==================================================
+   减少动画设置的用户
+================================================== */
 
-        @keyframes fade {
+        @media (prefers-reduced-motion: reduce) {
 
+            .about-page {
 
-            from {
-
-                opacity: 0;
-
-                transform: translateY(20px);
-
-            }
-
-
-            to {
-
-                opacity: 1;
+                scroll-behavior: auto;
 
             }
-
-
-        }
-
-
-
-        @media(max-width:800px) {
-
-
-            .intro {
-
-                grid-template-columns: 1fr;
-
-            }
-
 
         }
     </style>
 
-
 </head>
-
 
 
 
 <body>
 
 
+    <!-- ==================================================
+     整个 About 页面
+================================================== -->
 
+    <div class="about-page">
 
-    <a class="back" href="index.html">
 
-        ← 返回花园
+        <!-- ==============================================
+         第一部分
+    =============================================== -->
 
-    </a>
+        <section class="about-section about-top">
 
+        </section>
 
 
 
+        <!-- ==============================================
+         第二部分
+    =============================================== -->
 
-    <div class="page">
+        <section class="about-section about-bottom">
 
 
+            <!-- ==========================================
+             你的个人介绍文字
+        =========================================== -->
 
-
-
-        <div class="header">
-
-
-            <h1>
-
-                ABOUT ME
-
-            </h1>
-
-
-            <p>
-
-                一棵正在成长的数字植物
-
-            </p>
-
-
-
-        </div>
-
-
-
-
-
-
-
-        <div class="tree-box">
-
-
-
-            <div class="tree">
-
-
-
-                <div class="root"></div>
-
-
-                <div class="trunk"></div>
-
-
-                <div class="branch b1"></div>
-
-                <div class="branch b2"></div>
-
-                <div class="branch b3"></div>
-
-
-
-
-
-                <div class="skill s1">
-
-                    剪辑
-
-                </div>
-
-
-
-                <div class="skill s2">
-
-                    动画
-
-                </div>
-
-
-
-                <div class="skill s3">
-
-                    绘画
-
-                </div>
-
-
-
-                <div class="skill s4">
-
-                    3D建模
-
-                </div>
-
-
-
-                <div class="skill s5">
-
-                    Web设计
-
-                </div>
-
-
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-
-
-        <div class="intro">
-
-
-
-
-
-            <div class="card">
-
-
-                <h2>
-
-                    🌱 我的故事
-
-                </h2>
-
+            <div class="about-text">
 
                 <p>
-
-
-                    我是一名数字媒体技术学生。
-
-                    <br>
-
-
-                    我喜欢探索不同媒介之间的连接。
-
-
-                    <br>
-
-
-                    影像、动画、绘画、三维和网页，
-
-                    都是我表达想法的方式。
-
-
-                    <br>
-
-
-                    我希望创造的不只是作品，
-
-                    而是一种能够被体验的视觉空间。
-
-
+                    你好，我是 Icefish。
+                    这里可以写你的个人介绍。
+                    你可以介绍自己的学习方向、
+                    喜欢的创作方式、
+                    对设计、影像、AI或者数字媒体的理解。
+                    这里也可以写一些比较个人化的内容，
+                    让别人通过这个页面认识你。
+                    这一部分的文字长度之后可以慢慢调整。
                 </p>
 
-
-
             </div>
 
 
-
-
-
-
-
-            <div class="card">
-
-
-                <h2>
-
-                    🌳 成长路径
-
-                </h2>
-
-
-                <div class="timeline">
-
-
-
-                    <div class="item">
-
-
-                        <h3>
-
-                            开始探索数字媒体
-
-                        </h3>
-
-
-                        <span>
-
-                            学习视觉设计与基础创作
-
-                        </span>
-
-
-                    </div>
-
-
-
-
-                    <div class="item">
-
-
-                        <h3>
-
-                            接触多种媒介
-
-                        </h3>
-
-
-                        <span>
-
-                            视频 / 动画 / 3D / Web
-
-                        </span>
-
-
-                    </div>
-
-
-
-
-
-                    <div class="item">
-
-
-                        <h3>
-
-                            建立自己的数字花园
-
-                        </h3>
-
-
-                        <span>
-
-                            寻找属于自己的创作语言
-
-                        </span>
-
-
-                    </div>
-
-
-
-                </div>
-
-
-            </div>
-
-
-
-
-        </div>
-
-
-
-
+        </section>
 
 
     </div>
 
 
 
+    <script>
+
+        /* ==================================================
+           漂浮物设置
+        ================================================== */
 
 
+        /*
+            如果你只有一个漂浮物：
+        
+            floating.png
+        
+            就保持下面这样。
+        
+            如果以后有多个漂浮物，可以改成：
+        
+            "floating1.png",
+            "floating2.png",
+            "floating3.png"
+        
+            程序会随机使用它们。
+        */
+
+
+        const floatingImages = [
+
+            "floating.png"
+
+        ];
+
+
+
+        /*
+            漂浮物数量
+        
+            你可以以后修改这个数字。
+        
+            例如：
+        
+            6  = 6个
+            10 = 10个
+            15 = 15个
+        
+            我建议先从 8 个左右开始。
+        */
+
+
+        const floatingCount = 11;
+
+
+
+        /*
+            漂浮物最小尺寸
+        
+            单位：px
+        */
+
+
+        const minSize = 50;
+
+
+
+        /*
+            漂浮物最大尺寸
+        
+            单位：px
+        */
+
+
+        const maxSize = 80;
+
+
+
+        /*
+            最小移动速度
+        
+            数字越小越慢
+        */
+
+
+        const minDuration = 18;
+
+
+
+        /*
+            最大移动速度
+        
+            数字越大越慢
+        
+            所以：
+        
+            18 ~ 35 秒
+        
+            会让漂浮物非常缓慢地移动。
+        */
+
+
+        const maxDuration = 35;
+
+
+
+        /* ==================================================
+           创建漂浮物
+        ================================================== */
+
+        for (let i = 0; i < floatingCount; i++) {
+
+
+            const object = document.createElement("img");
+
+
+            object.classList.add("floating-object");
+
+
+            /*
+                随机选择图片
+            */
+
+            const randomImage =
+                floatingImages[
+                Math.floor(
+                    Math.random() * floatingImages.length
+                )
+                ];
+
+
+            object.src = randomImage;
+
+
+
+            /*
+                随机大小
+            */
+
+            const size =
+                minSize +
+                Math.random() *
+                (maxSize - minSize);
+
+
+            object.style.width = size + "px";
+
+
+
+            /*
+                随机初始位置
+        
+                留一点边缘空间，
+                避免漂浮物刚好贴在屏幕边缘。
+            */
+
+            const left =
+                Math.random() * 90 + 5;
+
+            const top =
+                Math.random() * 90 + 5;
+
+
+            object.style.left = left + "vw";
+
+            object.style.top = top + "vh";
+
+
+
+            /*
+                随机移动时间
+            */
+
+            const duration =
+                minDuration +
+                Math.random() *
+                (maxDuration - minDuration);
+
+
+
+            /*
+                随机移动距离
+            */
+
+            const moveX =
+                (Math.random() * 160) - 80;
+
+
+            const moveY =
+                (Math.random() * 160) - 80;
+
+
+
+            /*
+                每一个漂浮物生成自己的动画
+            */
+
+            const animationName =
+                "floatAnimation" + i;
+
+
+
+            const style =
+                document.createElement("style");
+
+
+
+            style.innerHTML = `
+
+        @keyframes ${animationName} {
+
+            0% {
+
+                transform:
+                    translate(0px, 0px);
+
+            }
+
+            50% {
+
+                transform:
+                    translate(
+                        ${moveX}px,
+                        ${moveY}px
+                    );
+
+            }
+
+            100% {
+
+                transform:
+                    translate(0px, 0px);
+
+            }
+
+        }
+
+    `;
+
+
+
+            document.head.appendChild(style);
+
+
+
+            /*
+                设置动画
+            */
+
+            object.style.animation =
+
+                `${animationName}
+         ${duration}s
+         ease-in-out
+         infinite`;
+
+
+
+            /*
+                随机动画起始时间
+        
+                防止所有漂浮物同时开始移动。
+            */
+
+            object.style.animationDelay =
+
+                `-${Math.random() * duration}s`;
+
+
+
+            /*
+                放入页面
+            */
+
+            document.body.appendChild(object);
+
+        }
+
+
+
+        /* ==================================================
+           鼠标滚轮控制
+        ================================================== */
+
+
+        /*
+            这里的功能是：
+        
+            第一屏向下滚一次
+            ↓
+            快速进入第二屏
+        
+        
+            第二屏向上滚一次
+            ↓
+            快速回到第一屏
+        
+        
+            不会让页面停在两个页面之间。
+        */
+
+
+        const page =
+            document.querySelector(".about-page");
+
+
+        const sections =
+            document.querySelectorAll(".about-section");
+
+
+        let currentSection = 0;
+
+
+        let isScrolling = false;
+
+
+
+        page.addEventListener(
+
+            "wheel",
+
+            function (event) {
+
+
+                /*
+                    防止一次滚轮产生很多次跳转
+                */
+
+                if (isScrolling) {
+
+                    event.preventDefault();
+
+                    return;
+
+                }
+
+
+
+                /*
+                    向下滚动
+                */
+
+                if (event.deltaY > 0) {
+
+                    if (
+                        currentSection
+                        <
+                        sections.length - 1
+                    ) {
+
+                        currentSection++;
+
+                    }
+
+                }
+
+
+
+                /*
+                    向上滚动
+                */
+
+                else if (event.deltaY < 0) {
+
+                    if (
+                        currentSection
+                        >
+                        0
+                    ) {
+
+                        currentSection--;
+
+                    }
+
+                }
+
+
+
+                /*
+                    如果没有发生页面变化，
+                    就不执行动画。
+                */
+
+                if (
+                    currentSection ===
+                    Math.round(
+                        page.scrollTop /
+                        window.innerHeight
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+
+                isScrolling = true;
+
+
+
+                /*
+                    滚动到目标部分
+                */
+
+                sections[currentSection].scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+
+
+                /*
+                    防止连续滚动
+        
+                    700ms之后允许再次滚动。
+                */
+
+                setTimeout(function () {
+
+                    isScrolling = false;
+
+                }, 700);
+
+
+                /*
+                    阻止浏览器原本的滚动
+                */
+
+                event.preventDefault();
+
+            },
+
+            {
+                passive: false
+            }
+
+        );
+
+    </script>
 
 
 </body>
-
 
 </html>
