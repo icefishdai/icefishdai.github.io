@@ -1,0 +1,890 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+  --brown: #8b7565;
+  --ink: #765f50;
+  --cream: #fff2cf;
+  --mint: #efffef;
+  --pink: #ffe9e9;
+  --yellow-paper: #f8f8e5;
+  --blue: #79aeb7;
+  --line: rgba(190, 143, 132, .48);
+  --hand: "Comic Sans MS", "Segoe Print", "Bradley Hand", cursive;
+  --body: "Quicksand", "Trebuchet MS", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--body);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.topbar {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 3.25%;
+  width: 93.5%;
+  min-height: 108px;
+  padding: 0 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--cream);
+  background: var(--brown);
+  border-radius: 0 0 44px 44px;
+  box-shadow: 0 3px 10px rgba(93, 72, 57, .04);
+}
+
+.brand {
+  font-size: clamp(2rem, 4.2vw, 3.8rem);
+  font-weight: 700;
+  letter-spacing: .015em;
+}
+
+.topbar nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(30px, 6vw, 92px);
+}
+
+.topbar nav a {
+  font-family: var(--hand);
+  font-size: clamp(1.2rem, 2.4vw, 2.15rem);
+  transition: color .2s, transform .2s;
+}
+
+.topbar nav a:hover {
+  color: #f5c4d9;
+  transform: translateY(-3px);
+}
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  color: var(--cream);
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  scroll-margin-top: 0;
+}
+
+.ruled-paper {
+  background-image:
+    linear-gradient(to right, transparent 0, transparent 10.2%, rgba(204, 157, 145, .20) 10.2%, rgba(204, 157, 145, .20) 10.52%, transparent 10.52%),
+    repeating-linear-gradient(to bottom, transparent 0, transparent 78px, var(--line) 79px, transparent 80px);
+}
+
+.home-page {
+  background-color: var(--mint);
+}
+
+.home-stage {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.sticker {
+  position: absolute;
+  display: block;
+  height: auto;
+  user-select: none;
+  -webkit-user-drag: none;
+  cursor: grab;
+  touch-action: pan-y;
+  filter: drop-shadow(0 2px 1px rgba(100, 80, 65, .035));
+}
+
+.sticker.dragging {
+  cursor: grabbing;
+  z-index: 15;
+}
+
+.sticker-welcome {
+  width: min(29.2vw, 420px);
+  left: 9%;
+  top: 22%;
+  transform: rotate(-7deg);
+}
+
+.sticker-my {
+  width: min(25.2vw, 365px);
+  left: 47.5%;
+  top: 27%;
+  transform: rotate(9deg);
+}
+
+.sticker-portfolio {
+  width: min(46.8vw, 675px);
+  left: 20.8%;
+  top: 51.5%;
+  transform: rotate(-3deg);
+}
+
+.hero-character {
+  position: absolute;
+  z-index: 4;
+  right: 12%;
+  bottom: 6%;
+  width: min(25vw, 360px);
+  height: 78%;
+  object-fit: contain;
+  object-position: bottom;
+  pointer-events: none;
+}
+
+.scroll-note {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #8b7565;
+  opacity: .55;
+  font: 15px var(--hand);
+}
+
+.scroll-note span {
+  padding-left: 7px;
+  animation: bob 1.5s infinite;
+  display: inline-block;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+.about-page {
+  background-color: var(--pink);
+  display: grid;
+  place-items: center;
+  padding: 115px 3vw 45px;
+}
+
+.about-stage {
+  position: relative;
+  width: min(94vw, 1360px);
+  height: min(78vh, 940px);
+  min-height: 650px;
+}
+
+.about-paper {
+  position: absolute;
+  width: min(100%, 1280px);
+  height: auto;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  user-select: none;
+}
+
+.about-copy {
+  position: absolute;
+  z-index: 2;
+  left: 8.8%;
+  top: 14.5%;
+  width: 65.5%;
+  height: 74%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.4% 1.2%;
+  color: #765f50;
+  font-family: var(--hand);
+  font-size: clamp(16px, 1.88vw, 26px);
+  line-height: 1.48;
+}
+
+.about-copy p {
+  margin: 0 0 .35em;
+}
+
+.envelope {
+  position: absolute;
+  z-index: 5;
+  right: 0.5%;
+  bottom: 1.5%;
+  width: clamp(230px, 23vw, 320px);
+  aspect-ratio: 374 / 407;
+  transform: rotate(-5deg);
+  transform-origin: center;
+  transition: transform .35s ease;
+}
+
+.envelope:hover {
+  transform: rotate(-2deg) translateY(-5px);
+}
+
+.env-layer {
+  position: absolute;
+  display: block;
+  height: auto;
+  user-select: none;
+  pointer-events: none;
+}
+
+.env-back {
+  z-index: 1;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+.env-inner {
+  z-index: 2;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+}
+
+.portrait-card {
+  position: absolute;
+  z-index: 3;
+  left: 16%;
+  top: 6%;
+  width: 70%;
+  height: 56%;
+  padding: 6px;
+  border: 6px solid var(--brown);
+  border-radius: 17px;
+  background: #f7e8d9;
+  overflow: hidden;
+  transform: rotate(2deg) translateY(38%);
+  transform-origin: center bottom;
+  transition: transform .55s cubic-bezier(.2, .8, .2, 1);
+  box-shadow: 0 5px 14px rgba(80, 60, 45, .12);
+}
+
+.portrait-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.envelope:hover .portrait-card {
+  transform: rotate(2deg) translateY(-13%);
+}
+
+.env-front {
+  z-index: 4;
+  width: 88%;
+  left: 6%;
+  bottom: 0;
+}
+
+/* Works page: restore the original staggered composition from the Figma screenshots. */
+.works-page {
+  background-color: var(--yellow-paper);
+  display: grid;
+  place-items: center;
+  padding: 110px 3vw 50px;
+}
+
+.works-stage {
+  position: relative;
+  width: min(94vw, 1320px);
+  height: min(76vh, 760px);
+  min-height: 560px;
+}
+
+.work-icon {
+  position: absolute;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform .28s ease, filter .28s ease;
+}
+
+.work-icon img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.work-icon:hover,
+.work-icon:focus-visible {
+  filter: drop-shadow(0 12px 10px rgba(90, 75, 60, .16));
+}
+
+/* Keep the original diagonal / staggered arrangement; move the group up only slightly. */
+.camera-button {
+  width: 20.5%;
+  left: 13%;
+  top: 18%;
+  transform: rotate(-12deg);
+}
+
+.camera-button:hover {
+  transform: rotate(-7deg) translateY(-8px) scale(1.06);
+}
+
+.book-button {
+  width: 24.5%;
+  left: 41%;
+  top: 33%;
+  transform: rotate(6deg);
+}
+
+.book-button:hover {
+  transform: rotate(2deg) translateY(-8px) scale(1.06);
+}
+
+.phone-button {
+  width: 13.5%;
+  left: 20%;
+  top: 63%;
+  transform: rotate(-5deg);
+}
+
+.phone-button:hover {
+  transform: rotate(-2deg) translateY(-8px) scale(1.06);
+}
+
+.sticker-click {
+  width: min(19.2vw, 275px);
+  right: 8%;
+  top: 12%;
+  transform: rotate(-5deg);
+}
+
+.works-page .sticker-click {
+  z-index: 2;
+}
+
+/* Original warm-brown contact footer from the Figma end frame. */
+.contact-page {
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 27px 20px;
+  background: var(--brown);
+  color: var(--cream);
+  text-align: center;
+  font-size: clamp(19px, 3.1vw, 42px);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.contact-page p {
+  margin: 0;
+}
+
+.contact-page a {
+  transition: color .2s;
+}
+
+.contact-page a:hover {
+  color: #f4bfd5;
+}
+
+/* Works album */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 4vw;
+  background: rgba(70, 58, 50, .25);
+  backdrop-filter: blur(3px);
+}
+
+.modal-backdrop.open {
+  display: grid;
+}
+
+.works-window {
+  position: relative;
+  width: min(88vw, 1220px);
+  height: min(82vh, 850px);
+  min-height: 430px;
+  padding: 34px 5% 54px;
+  border: 4px solid #c9b09d;
+  border-radius: 42px;
+  background: #fbfff3;
+  box-shadow: 0 20px 60px rgba(75, 60, 50, .18);
+}
+
+.close-button {
+  position: absolute;
+  z-index: 10;
+  top: -29px;
+  right: -29px;
+  width: 72px;
+  height: 72px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.close-button img {
+  width: 100%;
+  height: 100%;
+}
+
+.spread {
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  border: 1px solid #c9b09d;
+  border-radius: 0 0 25px 25px;
+  overflow: hidden;
+}
+
+.spread-side {
+  min-width: 0;
+  min-height: 0;
+  padding: 16px 22px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 10px 14px;
+  align-items: center;
+  justify-items: center;
+}
+
+.work-thumb {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.work-thumb img,
+.work-thumb video {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+.spread-side:first-child .work-thumb:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.spread-side:first-child .work-thumb:nth-child(2) {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.spread-side:first-child .work-thumb:nth-child(3) {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+.spread-side:last-child .work-thumb:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.spread-side:last-child .work-thumb:nth-child(2) {
+  grid-column: 2;
+  grid-row: 2 / span 2;
+}
+
+.spread-side+.spread-side {
+  border-left: 1px solid #b98e7d;
+}
+
+.work-thumb {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.work-thumb img,
+.work-thumb video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+  transition: transform .22s ease;
+}
+
+.work-thumb:hover img,
+.work-thumb:hover video {
+  transform: scale(1.015);
+}
+
+.work-thumb:hover img,
+.work-thumb:hover video {
+  transform: scale(1.045);
+}
+
+.empty-thumb {
+  width: min(100%, 180px);
+  height: min(100%, 220px);
+  display: grid;
+  place-items: center;
+  padding: 15px;
+  background: #d8d8d8;
+  color: #777;
+  font: 18px var(--hand);
+  text-align: center;
+}
+
+.page-arrow {
+  position: absolute;
+  bottom: 10px;
+  width: 62px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.page-arrow img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.page-arrow.prev {
+  left: 17px;
+}
+
+.page-arrow.next {
+  right: 17px;
+}
+
+.page-arrow:disabled {
+  opacity: .22;
+  cursor: default;
+}
+
+/* Separate media-only preview. It has no context area and no page arrows. */
+.lightbox {
+  position: fixed;
+  z-index: 230;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 5vw;
+  background: rgba(48, 39, 34, .52);
+  backdrop-filter: blur(2px);
+}
+
+.lightbox.open {
+  display: grid;
+}
+
+.lightbox-frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: fit-content;
+  height: fit-content;
+  max-width: 88vw;
+  max-height: 84vh;
+  min-width: 220px;
+  min-height: 150px;
+  padding: 0;
+  border: 10px solid #c99591;
+  border-radius: 22px;
+  background: #d8d8d8;
+  box-shadow: 0 18px 55px rgba(50, 35, 30, .2);
+  overflow: visible;
+}
+
+.lightbox-content {
+  display: grid;
+  place-items: center;
+  max-width: calc(88vw - 20px);
+  max-height: calc(84vh - 20px);
+  overflow: hidden;
+}
+
+.lightbox-content img,
+.lightbox-content video {
+  display: block;
+  max-width: calc(88vw - 20px);
+  max-height: calc(84vh - 20px);
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+.preview-placeholder {
+  width: min(68vw, 760px);
+  min-height: 260px;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: #765f50;
+  font: clamp(18px, 2vw, 28px) var(--hand);
+  text-align: center;
+  background: #d8d8d8;
+}
+
+.lightbox-close {
+  position: absolute;
+  z-index: 5;
+  top: -27px;
+  right: -27px;
+  width: 58px;
+  height: 58px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.lightbox-close img {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 76px;
+  }
+
+  .topbar {
+    min-height: 76px;
+    border-radius: 0 0 25px 25px;
+  }
+
+  .brand {
+    font-size: 2rem;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .topbar nav {
+    display: none;
+    position: absolute;
+    top: 76px;
+    right: 0;
+    min-width: 160px;
+    padding: 18px 24px;
+    flex-direction: column;
+    gap: 14px;
+    align-items: flex-end;
+    background: var(--brown);
+    border-radius: 0 0 20px 20px;
+  }
+
+  .topbar nav.show {
+    display: flex;
+  }
+
+  .topbar nav a {
+    font-size: 1.4rem;
+  }
+
+  .home-page {
+    min-height: 760px;
+  }
+
+  .home-stage {
+    min-height: 760px;
+  }
+
+  .sticker-welcome {
+    width: 48vw;
+    left: 3%;
+    top: 18%;
+  }
+
+  .sticker-my {
+    width: 39vw;
+    left: 48%;
+    top: 29%;
+  }
+
+  .sticker-portfolio {
+    width: 72vw;
+    left: 4%;
+    top: 53%;
+  }
+
+  .hero-character {
+    width: 39vw;
+    height: 47%;
+    right: 2%;
+    bottom: 4%;
+  }
+
+  .about-page {
+    min-height: 900px;
+    padding: 100px 3vw 35px;
+  }
+
+  .about-stage {
+    width: 100%;
+    height: 760px;
+    min-height: 0;
+  }
+
+  .about-paper {
+    width: 100%;
+    top: 38%;
+  }
+
+  .about-copy {
+    left: 8%;
+    top: 12%;
+    width: 82%;
+    height: 58%;
+    font-size: clamp(13px, 3.5vw, 16px);
+    line-height: 1.48;
+    padding: 1%;
+  }
+
+  .envelope {
+    width: 42vw;
+    right: 1%;
+    bottom: 0;
+  }
+
+  .works-page {
+    min-height: 760px;
+    padding: 95px 3vw 35px;
+  }
+
+  .works-stage {
+    width: 100%;
+    height: 650px;
+    min-height: 0;
+  }
+
+  .camera-button {
+    width: 35%;
+    left: 5%;
+    top: 12%;
+  }
+
+  .book-button {
+    width: 43%;
+    left: 48%;
+    top: 27%;
+  }
+
+  .phone-button {
+    width: 23%;
+    left: 12%;
+    top: 55%;
+  }
+
+  .sticker-click {
+    width: 31vw;
+    right: 3%;
+    top: 10%;
+  }
+
+  .works-window {
+    width: 94vw;
+    height: 74vh;
+    min-height: 390px;
+    padding: 28px 3% 50px;
+    border-radius: 25px;
+  }
+
+  .close-button {
+    width: 54px;
+    height: 54px;
+    top: -21px;
+    right: -12px;
+  }
+
+  .spread-side {
+    padding: 8px;
+    gap: 7px;
+  }
+
+  .page-arrow {
+    width: 48px;
+    bottom: 5px;
+  }
+
+  .lightbox-frame {
+    padding: 0;
+    border-width: 6px;
+  }
+
+  .lightbox-close {
+    width: 48px;
+    height: 48px;
+    top: -21px;
+    right: -17px;
+  }
+
+  .contact-page {
+    min-height: 125px;
+    font-size: 18px;
+  }
+}
