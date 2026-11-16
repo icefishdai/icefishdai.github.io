@@ -11,9 +11,9 @@ const WORKS = {
     title: "Visual & Illustration",
     pages: [
       [
-        { type: "image", src: "image/AFg.jpg", title: "Poster design" },
-        { type: "placeholder", title: "Character design" },
-        { type: "placeholder", title: "Poster / visual" },
+        { type: "video", src: "video1/1.mp4", title: "Poster design" },
+        { type: "video", src: "video3/3.mp4", title: "Poster design" },
+        { type: "video", src: "video4/4.mp4", title: "Poster design" },
         { type: "placeholder", title: "Sketchbook" },
         { type: "placeholder", title: "Digital drawing" }
       ],
@@ -62,18 +62,25 @@ const WORKS = {
     title: "3D, Animation & Video",
     pages: [
       [
-        { type: "image", src: "image/1.png", title: "Poster design" },
-        { type: "placeholder", title: "Animation" },
-        { type: "placeholder", title: "Video editing" },
-        { type: "placeholder", title: "AI creative work" },
-        { type: "placeholder", title: "Motion test" }
+        { type: "image", src: "uidesign1/page1.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page2.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page3.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page4.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page5.png", title: "Poster design" }
       ],
       [
-        { type: "placeholder", title: "3D scene" },
-        { type: "placeholder", title: "Short film" },
-        { type: "placeholder", title: "Motion graphics" },
-        { type: "placeholder", title: "AI experiment" },
-        { type: "placeholder", title: "More works" }
+        { type: "image", src: "uidesign1/page6.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page7.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page8.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page9.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page10.png", title: "Poster design" }
+      ],
+      [
+        { type: "image", src: "uidesign1/page11.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page12.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page13.png", title: "Poster design" },
+        { type: "image", src: "uidesign1/page14.png", title: "Poster design" },
+        { type: "video", src: "video2/2.mp4", title: "Poster design" }
       ]
     ]
   }
